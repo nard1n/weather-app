@@ -34,15 +34,13 @@
         <div class="col-3 left-col margs">
             <div><strong>Search for a City:</strong></div>
             <div class="input-group w-75 ">
-                <input type="text" class="form-control" aria-label="city name" aria-describedby="city-search-button">
+                <input type="text" class="form-control search-input" aria-label="city input" aria-describedby="city-search-input" method="POST">
                     <button class="btn btn-primary search-btn" type="button"><img src="./Assets/search-icon.png"></button>
                 </div>
         <!-- Previous Searches Div -->
                 <div>
                 <ul class="list-group list-group-flush margs">
-                    <li class="list-group-item">New York</li>
-                    <li class="list-group-item">Dallas</li>
-                    <li class="list-group-item">Boston</li>
+                    <li class="city-list"></li>
                 </ul>
                 </div>
             </div>
