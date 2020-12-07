@@ -95,20 +95,26 @@ function requestForecast (){
             //console.log("testFct", response); //to test response
             //console.log("test day", response.list[0].main.temp); //to test path
 
-           {
+            var cardDeck = "";
 
-            $(".card-deck").html(
+            for (var i = 0; i < 5; i++) {
+                //console.log("hello"); //to test for loop
+                
+                cardDeck +=
                 `<div class="card text-white bg-primary">
-                <h4>${month}/${day}/${year}</h4>
-                <p>Temp: ${response.list[0].main.temp.toFixed(2)}</p>
-                <p>Humidity: ${response.list[0].main.humidity}</p>
-                </div>`
-            );
-        }
-                  
+                   <h5>${month}/${day+i}/${year}</h5>
+                   <p>Temp: ${response.list[i].main.temp.toFixed(2)}</p>
+                   <p>Humidity: ${response.list[i].main.humidity}</p>
+                   </div>`;
+                //card += card;
 
-    });
-    
+            }
+
+            $(".card-deck").append(cardDeck);
+                      
+
+        });
+
 }
 
 // initializing seach
