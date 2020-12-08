@@ -1,6 +1,6 @@
 //Search variables
 var searchBtn = document.querySelector(".search-btn");
-var searchInput = '';
+var searchInput;
 
 var cityList = document.querySelector(".city-list");
 
@@ -8,7 +8,7 @@ var pastSearches = [];
 
 // API related variables
 let ApiKey = "ec824d7cd7829507b791a150658771ef";
-let city = searchInput; //click listener to insert html
+let city = "miami"; //click listener to insert html
 let lat = "";
 let lon = "";
 
@@ -74,7 +74,7 @@ function requestWeather () {
 function renderCurrentWeather(response1, response2){
     //console.log("test1", response1); //to test response
     //console.log("test2", response2); //to test response
-    $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) (${response1.weather[0].description})</h1>`);
+    $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) <img src="http://openweathermap.org/img/wn/${response1.weather[0].icon}.png"></h1>`);
     $(".humidity").text(`Humidity: ${response1.main.humidity}`);
     $(".wind").text(`Wind Speed: ${response1.wind.speed}`);
     $(".temp").text(`Temperature (F): ${response1.main.temp.toFixed(2)}`);
@@ -103,6 +103,7 @@ function requestForecast (){
                 cardDeck +=
                 `<div class="card text-white bg-primary">
                    <h5>${month}/${day+i}/${year}</h5>
+                   <span><img src="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}.png"></span>
                    <p>Temp: ${response.list[i].main.temp.toFixed(2)}</p>
                    <p>Humidity: ${response.list[i].main.humidity}</p>
                    </div>`;
@@ -148,7 +149,8 @@ $(".search-btn").on("click", function(event) {
 
     // add new city to pastSearches array
     pastSearches.push(searchInput);
-    searchInput.value = "";
+
+    searchInput.text = "";
 
     //store updated array in local storage, re-render the list
     storeCities();
