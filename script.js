@@ -1,6 +1,6 @@
 //Search variables
 var searchBtn = document.querySelector(".search-btn");
-var searchInput = (document.querySelector(".search-input")).value.trim();
+var searchInput = '';
 
 var cityList = document.querySelector(".city-list");
 
@@ -140,7 +140,7 @@ function storeCities() {
 //click handler when search is submitted
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
-
+    var searchInput = (document.querySelector(".search-input")).value.trim();
     //return from function if input is blank
     if (searchInput === "") {
         return;
