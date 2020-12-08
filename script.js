@@ -75,9 +75,9 @@ function renderCurrentWeather(response1, response2){
     //console.log("test1", response1); //to test response
     //console.log("test2", response2); //to test response
     $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) <img src="http://openweathermap.org/img/wn/${response1.weather[0].icon}.png"></h1>`);
-    $(".humidity").text(`Humidity: ${response1.main.humidity}`);
-    $(".wind").text(`Wind Speed: ${response1.wind.speed}`);
-    $(".temp").text(`Temperature (F): ${response1.main.temp.toFixed(2)}`);
+    $(".humidity").text(`Humidity: ${response1.main.humidity}%`);
+    $(".wind").text(`Wind Speed: ${response1.wind.speed} MPH`);
+    $(".temp").text(`Temperature: ${response1.main.temp.toFixed(2)}°F`);
     $(".uv").text(`UV Index: ${response2.value}`);
 
 }      
@@ -104,8 +104,8 @@ function requestForecast (){
                 `<div class="card text-white bg-primary">
                    <h5>${month}/${day+i}/${year}</h5>
                    <span><img src="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}.png"></span>
-                   <p>Temp: ${response.list[i].main.temp.toFixed(2)}</p>
-                   <p>Humidity: ${response.list[i].main.humidity}</p>
+                   <p>Temp: ${response.list[i].main.temp.toFixed(2)}&#176;F</p>
+                   <p>Humidity: ${response.list[i].main.humidity}&#37</p>
                    </div>`;
                 //card += card;
 
