@@ -8,7 +8,7 @@ var pastSearches = [];
 
 // API related variables
 let ApiKey = "ec824d7cd7829507b791a150658771ef";
-let city = "miami"; //click listener to insert html
+let city = "sydney"; //click listener to insert html
 let lat = "";
 let lon = "";
 
@@ -74,11 +74,23 @@ function requestWeather () {
 function renderCurrentWeather(response1, response2){
     //console.log("test1", response1); //to test response
     //console.log("test2", response2); //to test response
+    document.getElementById("border").classList.add("card");
     $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) <img src="http://openweathermap.org/img/wn/${response1.weather[0].icon}.png"></h1>`);
     $(".humidity").text(`Humidity: ${response1.main.humidity}%`);
     $(".wind").text(`Wind Speed: ${response1.wind.speed} MPH`);
-    $(".temp").text(`Temperature: ${response1.main.temp.toFixed(2)}°F`);
-    $(".uv").text(`UV Index: ${response2.value}`);
+    $(".temp").text(`Temperature: ${response1.main.temp.toFixed(1)} °F`);
+    $("#uv").html(`<div>UV Index: <span id="uvColor">${response2.value}</span></div>`);
+
+    var uvValue = response2.value;
+    //console.log(uvValue); // to test for uv value
+    var uvId = document.getElementById("uvColor");
+    if (uvValue < 3) {
+        uvId.classList.add("safe");        
+    } else if (uvValue > 3 && uvValue < 7) {
+        uvId.classList.add("warning");
+    } else {
+        uvId.classList.add("danger");
+    }
 
 }      
 
@@ -95,6 +107,7 @@ function requestForecast (){
             //console.log("testFct", response); //to test response
             //console.log("test day", response.list[0].main.temp); //to test path
 
+            $(".five-day").html(`<h3>5-Day Forecast:</h3>`);
             var cardDeck = "";
 
             for (var i = 0; i < 5; i++) {

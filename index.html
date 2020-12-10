@@ -31,9 +31,9 @@
     <div class="container-fluid">
         <!-- Search Bar Div -->
         <div class="row">
-        <div class="col-3 left-col margs">
-            <div><strong>Search for a City:</strong></div>
-            <div class="input-group w-75 ">
+        <div class="col-3 left-col">
+            <div class="margs"><strong>Search for a City:</strong></div>
+            <div class="input-group w-75 margs">
                 <input type="text" class="form-control search-input" aria-label="city input" aria-describedby="city-search-input" method="POST">
                     <button class="btn btn-primary search-btn" type="button"><img src="./Assets/search-icon.png"></button>
                 </div>
@@ -46,12 +46,12 @@
     
         <!-- Weather Results Column -->
     <div class="col-9">
-        <div class="card">
+        <div id="border">
             <p class="city-selected"></p>
             <p class="temp"></p>
             <p class="humidity"></p>
             <p class="wind"></p>
-            <p class="uv"></p>
+            <p id="uv"></p>
         </div>
         
         <div>

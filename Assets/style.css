@@ -1,5 +1,5 @@
 .banner {
-    line-height: 1.5;
+    line-height: 2;
     background-color: #343B40;
     color: white;
     text-align: center;
@@ -12,10 +12,10 @@
 }
 
 .margs {
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
-.left-col{
+.left-col {
     background-color: #F8F9FA;
 }
 
@@ -26,4 +26,29 @@
 
 .card {
     padding: 1rem;
+}
+
+.safe {
+    background-color: rgb(157, 230, 212);
+    color: white;
+    padding: 2px;
+    border-radius: 10%;
+}
+
+.warning {
+    background-color: rgb(249, 186, 70);
+    color: white; 
+    padding: 2px;
+    border-radius: 10%;
+}
+
+.danger {
+    background-color: red;
+    color: white;
+    padding: 2px;
+    border-radius: 10%;
+}
+
+#border {
+    margin-top: 2%;
 }
