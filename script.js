@@ -74,7 +74,7 @@ function renderCurrentWeather(response1, response2){
     //console.log("test1", response1); //to test response
     //console.log("test2", response2); //to test response
     document.getElementById("border").classList.add("card");
-    $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) <img src="http://openweathermap.org/img/wn/${response1.weather[0].icon}.png"></h1>`);
+    $(".city-selected").html(`<h1>${response1.name} (${month}/${day}/${year}) <img src="https://openweathermap.org/img/wn/${response1.weather[0].icon}.png"></h1>`);
     $(".humidity").text(`Humidity: ${response1.main.humidity}%`);
     $(".wind").text(`Wind Speed: ${response1.wind.speed} MPH`);
     $(".temp").text(`Temperature: ${response1.main.temp.toFixed(1)} °F`);
@@ -108,7 +108,10 @@ function requestForecast (){
             //console.log("test day", response.list[0].main.temp); //to test path
 
             $(".five-day").html(`<h3>5-Day Forecast:</h3>`);
+        
             var cardDeck = "";
+
+            $(".card-deck").empty();
 
             for (var i = 0; i < 5; i++) {
                 //console.log("hello"); //to test for loop
