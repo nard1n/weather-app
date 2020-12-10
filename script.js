@@ -1,14 +1,13 @@
 //Search variables
-var searchBtn = document.querySelector(".search-btn");
 var searchInput;
 
 var cityList = document.querySelector(".city-list");
 
 var pastSearches = [];
-
 // API related variables
 let ApiKey = "ec824d7cd7829507b791a150658771ef";
-let city = "sydney"; //click listener to insert html
+let city = ""; //click listener to insert html
+//console.log(city);
 let lat = "";
 let lon = "";
 
@@ -97,6 +96,7 @@ function renderCurrentWeather(response1, response2){
 
 // GET functionality for weather forecast of selected city + HTML output
 function requestForecast (){
+    
 
     let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${ApiKey}&cnt=5`;
 
@@ -154,6 +154,7 @@ function storeCities() {
 //click handler when search is submitted
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
+
     var searchInput = (document.querySelector(".search-input")).value.trim();
     //return from function if input is blank
     if (searchInput === "") {
@@ -162,8 +163,9 @@ $(".search-btn").on("click", function(event) {
 
     // add new city to pastSearches array
     pastSearches.push(searchInput);
-
+    
     searchInput.text = "";
+    city = searchInput;
 
     //store updated array in local storage, re-render the list
     storeCities();
