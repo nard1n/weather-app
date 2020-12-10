@@ -24,6 +24,12 @@
     filter: invert(1); 
 }
 
+.error {
+    color: red;
+    font-size: 0.8rem;
+    text-shadow: 0px 0px 3px #6d6d6d;
+}
+
 .card {
     padding: 1rem;
 }
