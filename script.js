@@ -20,7 +20,7 @@ function renderCities() {
     for (var i = 0; i < pastSearches.length; i++) {
         var citySearches = pastSearches[i];
 
-        var li = document.createElement("li");
+        var li = document.createElement("button");
         li.textContent = citySearches;
         li.classList.add("list-group-item", "city-list");
         //li.setAttribute("data-index", i);
@@ -53,9 +53,7 @@ function requestWeather() {
             }
           }
     }).then(function (response) {
-        console.log(response.cod);
-
-
+        //console.log(response.cod); // test for error response
 
             var weatherApiResponse = response;
 
@@ -105,10 +103,8 @@ function renderCurrentWeather(response1, response2) {
 
 }
 
-
 // GET functionality for weather forecast of selected city + HTML output
 function requestForecast() {
-
 
     let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${ApiKey}&cnt=5`;
 
@@ -141,7 +137,6 @@ function requestForecast() {
 
         $(".card-deck").append(cardDeck);
 
-
     });
 
 }
@@ -155,6 +150,10 @@ function init() {
     //if cities are retreived from local sotrage, update pastSearches array
     if (storedSearches !== null) {
         pastSearches = storedSearches;
+    }
+
+    if (pastSearches.length > 5) {
+        pastSearches.splice(3, pastSearches.length);
     }
 
     //render cities searched to the dom
@@ -183,9 +182,11 @@ $(".search-btn").on("click", function (event) {
     city = searchInput;
 
     //store updated array in local storage, re-render the list
+    //spliceCities();
     storeCities();
     renderCities();
 
     requestWeather();
     requestForecast();
+
 });

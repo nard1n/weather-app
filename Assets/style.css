@@ -11,6 +11,10 @@
     background-color: slategray;
 }
 
+.five-day {
+    margin-top: 0.5rem; 
+}
+
 .margs {
     padding: 0.5rem 0.5rem;
 }
