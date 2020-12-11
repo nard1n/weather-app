@@ -48,34 +48,34 @@ function requestWeather() {
         url: queryURL,
         method: "GET",
         statusCode: {
-            404: function() {
-              generateErrorMsg();
+            404: function () {
+                generateErrorMsg();
             }
-          }
+        }
     }).then(function (response) {
         //console.log(response.cod); // test for error response
 
-            var weatherApiResponse = response;
+        var weatherApiResponse = response;
 
-            lon = response.coord.lon;
-            lat = response.coord.lat;
+        lon = response.coord.lon;
+        lat = response.coord.lat;
 
-            queryURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
+        queryURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
 
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                var uvApiResponse = response;
-                //console.log("UV ", uvApiResponse ); // to test response
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var uvApiResponse = response;
+            //console.log("UV ", uvApiResponse ); // to test response
 
-                renderCurrentWeather(weatherApiResponse, uvApiResponse);
-            });
-        
+            renderCurrentWeather(weatherApiResponse, uvApiResponse);
+        });
+
     });
 }
 
-function generateErrorMsg () {
+function generateErrorMsg() {
     $(".error").text(`Enter a valid city`);
 }
 
@@ -153,7 +153,7 @@ function init() {
     }
 
     if (pastSearches.length > 5) {
-        pastSearches.splice(3, pastSearches.length);
+        pastSearches.splice(1, pastSearches.length);
     }
 
     //render cities searched to the dom
@@ -190,3 +190,13 @@ $(".search-btn").on("click", function (event) {
     requestForecast();
 
 });
+
+// click handler for search history
+$(document).on("click", ".city-list", function(event) {
+    event.preventDefault();
+    alert("sorry =(\nthis button is currently unavailable"); //have to log off before i can complete this functionality
+
+    requestWeather();
+    requestForecast();
+
+})
